@@ -1,0 +1,219 @@
+/* Define CSS Variables for the Color Palette */
+:root {
+    --black: #000505;
+    --space-cadet: #3b3355;
+    --ultra-violet: #5d5d81;
+    --columbia-blue: #bfcde0;
+    --white: #fefcfd;
+
+    /* Gradient Definitions */
+    --gradient-top: linear-gradient(0deg, var(--black), var(--space-cadet), var(--ultra-violet), var(--columbia-blue), var(--white));
+    --gradient-right: linear-gradient(90deg, var(--black), var(--space-cadet), var(--ultra-violet), var(--columbia-blue), var(--white));
+    --gradient-bottom: linear-gradient(180deg, var(--black), var(--space-cadet), var(--ultra-violet), var(--columbia-blue), var(--white));
+    --gradient-left: linear-gradient(270deg, var(--black), var(--space-cadet), var(--ultra-violet), var(--columbia-blue), var(--white));
+    --gradient-top-right: linear-gradient(45deg, var(--black), var(--space-cadet), var(--ultra-violet), var(--columbia-blue), var(--white));
+    --gradient-bottom-right: linear-gradient(135deg, var(--black), var(--space-cadet), var(--ultra-violet), var(--columbia-blue), var(--white));
+    --gradient-top-left: linear-gradient(225deg, var(--black), var(--space-cadet), var(--ultra-violet), var(--columbia-blue), var(--white));
+    --gradient-bottom-left: linear-gradient(315deg, var(--black), var(--space-cadet), var(--ultra-violet), var(--columbia-blue), var(--white));
+    --gradient-radial: radial-gradient(circle, var(--black), var(--space-cadet), var(--ultra-violet), var(--columbia-blue), var(--white));
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--black);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Header Styling */
+h1 {
+    margin-bottom: 20px;
+    color: var(--space-cadet);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Body Weight Input */
+#bodyweight {
+    padding: 10px 15px;
+    border: 2px solid var(--space-cadet);
+    border-radius: 5px;
+    width: 200px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    font-size: 16px;
+}
+
+#bodyweight:focus {
+    border-color: var(--ultra-violet);
+}
+
+/* Add Workout Button */
+#addWorkoutBtn {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: var(--space-cadet);
+    color: var(--white);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#addWorkoutBtn:hover {
+    background-color: var(--ultra-violet);
+    transform: translateY(-2px);
+}
+
+#addWorkoutBtn:active {
+    transform: translateY(0);
+}
+
+/* Workout Section Styling */
+.workout-section {
+    width: 100%;
+    max-width: 600px;
+    background: var(--columbia-blue);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workout-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+}
+
+/* Workout Select */
+.workout-section select {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid var(--space-cadet);
+    border-radius: 5px;
+    outline: none;
+    background-color: var(--white);
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.workout-section select:focus {
+    border-color: var(--ultra-violet);
+}
+
+/* Input Container */
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.input-container input {
+    padding: 10px 15px;
+    border: 2px solid var(--space-cadet);
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.input-container input:focus {
+    border-color: var(--ultra-violet);
+}
+
+.add-set-btn, .remove-set-btn, .remove-workout-btn {
+    padding: 8px 12px;
+    background-color: var(--ultra-violet);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.add-set-btn:hover, .remove-set-btn:hover, .remove-workout-btn:hover {
+    background-color: var(--space-cadet);
+}
+
+.add-set-btn:active, .remove-set-btn:active, .remove-workout-btn:active {
+    transform: scale(0.98);
+}
+
+/* Sets Container */
+.set {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.set input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+/* Calories Output */
+.calories-output {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--space-cadet);
+    font-size: 16px;
+}
+
+/* Remove Workout Button */
+.remove-workout-btn {
+    margin-top: 15px;
+    background-color: var(--black);
+}
+
+.remove-workout-btn:hover {
+    background-color: var(--space-cadet);
+}
+
+/* Total Calories Display */
+h2 {
+    margin-top: 30px;
+    color: var(--space-cadet);
+    font-size: 24px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .input-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .input-container input, .distance-input {
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .set {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .set input, .remove-set-btn {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

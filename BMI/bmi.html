@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>BMI Tracker</h1>
+        <div class="input-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" min="0" step="0.1" required>
+        </div>
+        <div class="input-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" min="0" step="0.1" required>
+        </div>
+        <button onclick="calculateBMI()">Calculate BMI</button>
+
+        <div id="result" class="result">
+            <p id="bmi-value">Your BMI: -</p>
+            <p id="bmi-category">Category: -</p>
+        </div>
+    </div>
+
+    <script src="bmi.js"></script>
+</body>
+</html>

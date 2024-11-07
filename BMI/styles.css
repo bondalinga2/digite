@@ -1,0 +1,107 @@
+/* Define CSS Variables for the Color Palette */
+:root {
+    --black: #000505;
+    --space-cadet: #3b3355;
+    --ultra-violet: #5d5d81;
+    --columbia-blue: #bfcde0;
+    --white: #fefcfd;
+
+    /* Gradient Definitions */
+    --gradient-top: linear-gradient(0deg, var(--black), var(--space-cadet), var(--ultra-violet), var(--columbia-blue), var(--white));
+    --gradient-right: linear-gradient(90deg, var(--black), var(--space-cadet), var(--ultra-violet), var(--columbia-blue), var(--white));
+}
+
+/* Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--gradient-top);
+    color: var(--black);
+}
+
+/* Container Styling */
+.container {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+}
+
+/* Header Styling */
+h1 {
+    font-size: 1.5rem;
+    color: var(--space-cadet);
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    font-size: 0.9rem;
+    color: var(--ultra-violet);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Input Styling */
+input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--space-cadet);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--ultra-violet);
+}
+
+/* Button Styling */
+button {
+    background-color: var(--space-cadet);
+    color: var(--white);
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--ultra-violet);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Result Section */
+.result {
+    margin-top: 1.5rem;
+}
+
+.result p {
+    font-size: 1.1rem;
+    color: var(--space-cadet);
+    font-weight: bold;
+}
