@@ -24,9 +24,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: var(--gradient-top);
+    background-color: var(--columbia-blue); /* Soft background color */
     color: var(--black);
 }
+
 
 /* Container Styling */
 .container {
