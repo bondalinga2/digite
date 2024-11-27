@@ -62,7 +62,6 @@ function addWorkoutSection() {
     workoutSection.classList.add('workout-section');
     workoutSection.setAttribute('data-id', workoutIdCounter);
 
-    // Workout Select
     const workoutSelect = document.createElement('select');
     for (const workout in workoutData) {
         const option = document.createElement('option');
@@ -71,34 +70,28 @@ function addWorkoutSection() {
         workoutSelect.appendChild(option);
     }
 
-    // Input Container
     const inputContainer = document.createElement('div');
     inputContainer.classList.add('input-container');
 
-    // Primary Input (Duration, Distance, or Reps)
     const primaryInput = document.createElement('input');
     primaryInput.type = 'number';
     primaryInput.min = 1;
     primaryInput.classList.add('primary-input');
 
-    // Add Set Button for Reps-Based Workouts
     const addSetBtn = document.createElement('button');
     addSetBtn.textContent = 'Add Set';
     addSetBtn.type = 'button';
     addSetBtn.style.display = 'none';
     addSetBtn.classList.add('add-set-btn');
 
-    // Sets Container for Reps-Based Workouts
     const setsContainer = document.createElement('div');
     setsContainer.classList.add('sets-container');
     setsContainer.style.display = 'none';
 
-    // Append primary input and add set button to input container
     inputContainer.appendChild(primaryInput);
     inputContainer.appendChild(addSetBtn);
     inputContainer.appendChild(setsContainer);
 
-    // Distance Input (for workouts that support distance)
     const distanceInput = document.createElement('input');
     distanceInput.type = 'number';
     distanceInput.min = 0.1;
@@ -109,27 +102,22 @@ function addWorkoutSection() {
 
     inputContainer.appendChild(distanceInput);
 
-    // Calories Output
     const caloriesOutput = document.createElement('span');
     caloriesOutput.textContent = 'Calories burned: 0 kcal';
     caloriesOutput.classList.add('calories-output');
 
-    // Remove Workout Button
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
     removeBtn.type = 'button';
     removeBtn.classList.add('remove-workout-btn');
 
-    // Append all elements to workout section
     workoutSection.appendChild(workoutSelect);
     workoutSection.appendChild(inputContainer);
     workoutSection.appendChild(caloriesOutput);
     workoutSection.appendChild(removeBtn);
 
-    // Add workout section to container
     workoutContainer.appendChild(workoutSection);
 
-    // Initialize workout entry
     workoutEntries.push({
         id: workoutIdCounter,
         calories: 0
@@ -138,12 +126,10 @@ function addWorkoutSection() {
     const currentId = workoutIdCounter;
     workoutIdCounter++;
 
-    // Update Input Placeholder and Visibility Based on Workout Type
     function updateInputs() {
         const selectedWorkout = workoutSelect.value;
         const types = workoutData[selectedWorkout].types;
 
-        // Reset inputs
         primaryInput.value = '';
         distanceInput.value = '';
         caloriesOutput.textContent = 'Calories burned: 0 kcal';
@@ -154,7 +140,6 @@ function addWorkoutSection() {
         }
         calculateTotalCalories();
 
-        // Determine input types
         if (types.includes("reps")) {
             primaryInput.placeholder = 'Reps';
             primaryInput.style.display = 'none';
@@ -183,7 +168,6 @@ function addWorkoutSection() {
         }
     }
 
-    // Update Calories Based on Inputs
     function updateCalories() {
         const selectedWorkout = workoutSelect.value;
         const types = workoutData[selectedWorkout].types;
@@ -197,8 +181,7 @@ function addWorkoutSection() {
                 const val = parseFloat(input.value);
                 if (val && val > 0) totalReps += val;
             });
-            // Adjust the multiplier based on the specific exercise
-            const repsFactor = 0.05; // Example multiplier
+            const repsFactor = 0.05;
             caloriesBurned = workoutData[selectedWorkout].MET * bodyWeight * totalReps * repsFactor;
         } else {
             const durationValue = parseFloat(primaryInput.value);
@@ -206,7 +189,7 @@ function addWorkoutSection() {
 
             if (types.includes("time") && types.includes("distance")) {
                 if (durationValue > 0 && distanceValue > 0) {
-                    const pace = distanceValue / (durationValue / 60); // km/h
+                    const pace = distanceValue / (durationValue / 60);
                     const adjustedMET = getAdjustedMET(selectedWorkout, pace);
                     caloriesBurned = adjustedMET * bodyWeight * (durationValue / 60);
                 } else if (durationValue > 0) {
@@ -225,7 +208,6 @@ function addWorkoutSection() {
             }
         }
 
-        // Update calories burned
         if (workoutIndex !== -1) {
             totalCaloriesBurned -= workoutEntries[workoutIndex].calories;
             workoutEntries[workoutIndex].calories = caloriesBurned;
@@ -236,7 +218,6 @@ function addWorkoutSection() {
         calculateTotalCalories();
     }
 
-    // Remove Workout Section
     function removeWorkout() {
         const workoutIndex = workoutEntries.findIndex(entry => entry.id === currentId);
         if (workoutIndex !== -1) {
@@ -247,7 +228,6 @@ function addWorkoutSection() {
         }
     }
 
-    // Add Set for Reps-Based Workouts
     function addSet() {
         const setDiv = document.createElement('div');
         setDiv.classList.add('set');
@@ -274,7 +254,6 @@ function addWorkoutSection() {
         });
     }
 
-    // Event Listeners
     workoutSelect.addEventListener('change', () => {
         updateInputs();
         updateCalories();
@@ -284,7 +263,6 @@ function addWorkoutSection() {
     removeBtn.addEventListener('click', removeWorkout);
     addSetBtn.addEventListener('click', addSet);
 
-    // Initialize Inputs for Default Selection
     updateInputs();
 }
 
